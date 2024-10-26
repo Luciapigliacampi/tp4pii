@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 760">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #424242;
+        stroke-miterlimit: 133.33;
+        stroke-width: 50px;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  <circle class="cls-1" cx="380" cy="280" r="100"/>
+  <circle class="cls-1" cx="380" cy="380" r="333.33"/>
+  <path class="cls-2" d="M578.97,646.67c-5.3-96.38-34.81-166.67-198.97-166.67s-193.67,70.28-198.97,166.67"/>
+</svg>

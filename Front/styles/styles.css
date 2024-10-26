@@ -1,0 +1,143 @@
+.login-box .btn,
+.register-box .btn {
+background-color: #1952A0;
+color: #FFFFFF;
+}
+
+.login-box .register-btn {
+  background-color: #FFFFFF;
+}
+
+@font-face {
+  font-family: 'BearRegular';
+  src: url('fonts/bear-regular-webfont.woff') format('woff'), url('fonts/bear-regular-webfont.woff2') format('woff2');
+  font-weight: lighter;
+}
+
+@font-face {
+  font-family: 'Myriad';
+  src: url('fonts/myriadpro-cond-webfont.woff') format('woff'), url('fonts/myriadpro-cond-webfont.woff2') format('woff2'), url('fonts/myriadpro-regular-webfont.woff') format('woff'), url('fonts/myriadpro-regular-webfont.woff2') format('woff2');
+  font-weight: normal;
+}
+
+.sidebar .img-circle {
+  background-color: #FFFFFF;
+}
+
+.main-sidebar {
+  background-color: #1952A0;
+}
+
+.main-sidebar .brand-link, .sidebar .user-panel {
+  border-color: #435dcf;
+}
+
+.main-sidebar .sidebar .d-block, .nav-sidebar .nav-item .nav-link, .main-sidebar .sidebar .logout{
+  color: #FFFFFF;
+}
+
+.main-sidebar .brand-link .titulo {
+  font-family: BearRegular, sans-serif;
+  font-size:4vh;
+  padding-bottom: -10px;
+}
+
+.main-sidebar .brand-link .subtitulo {
+  font-family: Myriad, sans-serif;
+  font-size:1.6vh;
+  margin-top: -10px;
+}
+
+.buscador-clientes {
+  width: 300px
+}
+
+@media (max-width: 576px) {
+  .buscador-clientes {
+    width: 250px
+  }
+}
+
+.tablaPedidos:hover {
+  cursor: pointer
+}
+
+.form-control-pedidos {
+  height: 1.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-primary-pedido {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  box-shadow: none;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: end;
+  padding: 0.15rem 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-primary-pedido:hover {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+
+
+.small-box-panel .icon {
+  top: 0;
+  right: 0;
+  font-size: 80px; /* Ajusta el tamaño del ícono según necesites */
+  z-index: 0;
+  opacity: 0.5;
+  height: 100%; /* Hacer que el ícono tome toda la altura de la card */
+  display: flex;
+  align-items: center; /* Centrar el ícono verticalmente */
+  justify-content: center; /* Centrar el ícono horizontalmente */
+  padding-bottom: 10px;
+  color: #1952A0;
+}
+
+.small-box-panel .inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centrar el contenido verticalmente */
+  align-items: center;
+}
+
+.small-box-panel h3 {
+  margin-bottom: 10; /* Eliminar el margen inferior para asegurar que el contenido esté alineado */
+padding-top: 10px;
+color: #1952A0;
+opacity: 0.8;
+}
+
+.card-panel {
+  border-radius: 5px;
+  background-color: #ffffff;
+  margin: 15px;
+  box-shadow: 10px 10px 15px rgba(128, 127, 127, 0.3);
+  border-color: #1951a02f;
+  border-style:solid;
+}
+
+#contenedorErrores {
+  color: #ff0b0b;
+}
