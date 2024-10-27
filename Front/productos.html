@@ -31,7 +31,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item">
-          <h4 class="nav-link">Clientes</h4>
+          <h4 class="nav-link">Productos</h4>
         </li>
       </ul>
 
@@ -123,10 +123,10 @@
             </li>
 
             <li class="nav-item">
-              <a href="clientes.html" class="nav-link">
+              <a href="productos.html" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
-                  Clientes
+                  Productos
                 </p>
               </a>
             </li>
@@ -185,7 +185,7 @@
           <div class="col-sm-12">
             <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="panel.html">Home</a></li>
-              <li class="breadcrumb-item active">Clientes</li>
+              <li class="breadcrumb-item active">Productos</li>
             </ol>
           </div>
         </div>
@@ -200,14 +200,26 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Listado de clientes</h3>
+                    <h3 class="card-title">Listado de prodcutos</h3>
 
                     <div class="card-tools">
 
-                      <div class="input-group input-group-sm buscador-clientes">
+                      <div class="input-group input-group-sm buscador-productos">
                         <div class="input-group-append">
 
-                          <a class="btn" href="nuevo_cliente.html">
+                          <a class="btn" href="#">
+                            <i class="fas fa-sort-amount-down-alt"></i>
+                          </a>
+                    
+                          <a class="btn" href="#">
+                            <i class="fas fa-filter"></i>
+                          </a>
+    
+                          <a class="btn" href="#">
+                            <i class="fas fa-download"></i>
+                          </a>
+
+                          <a class="btn" href="nuevo_producto.html">
                             <i class="fas fa-user-plus"></i>
                           </a>
 
@@ -225,18 +237,18 @@
                   </div>
                   <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap">
-                      <thead>
+                      <!-- <thead>
                         <tr>
-                          <th>Nombre y apellido</th>
-                          <th>Teléfono</th>
+                          <th>Articulo</th>
+                          <th>Precio</th>
                           <th>Dirección</th>
                           <th>Barrio</th>
                           <th>Localidad</th>
-                          <th>Tipo de cliente</th>
+                          <th>Tipo de producto</th>
                           <th>Acciones</th>
                         </tr>
-                      </thead>
-                      <tbody id="tablaClientes">
+                      </thead> -->
+                      <tbody id="tablaProductos">
                       </tbody>
                     </table>
                   </div>
@@ -259,7 +271,7 @@
 
             <div class="row">
               <div class="col-md-12">
-                <input type="text" id="idCliente" hidden>
+                <input type="text" id="idProducto" hidden>
                 <div class="card-body">
                   <div class="form-group row">
                     <div class="col-12">
@@ -335,10 +347,10 @@
 
                   <div class="form-group row">
                     <div class="col-12">
-                      <label for="tipoCliente">Tipo de cliente</label>
+                      <label for="tipoProducto">Tipo de producto</label>
                     </div>
                     <div class="col-5">
-                      <select id="tipoCliente" name="tipoCliente" class="form-control">
+                      <select id="tipoProducto" name="tipoProducto" class="form-control">
                       </select>
                     </div>
                     <div class="col-6"></div>
@@ -346,11 +358,11 @@
                   <div id="contenedorErrores">
                   </div>
                 </div>
-                
+
               </div>
-              
+
             </div>
-           
+
           </div>
 
 
@@ -386,7 +398,7 @@
   <script src="dist/js/pages/dashboard.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="source/clientes.js"></script>
+  <script src="source/productos.js"></script>
 </body>
 
 </html>

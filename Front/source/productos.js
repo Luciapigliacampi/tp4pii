@@ -1,4 +1,4 @@
-obtenerClientes();
+obtenerProductos();
 
 const textoBusqueda = document.getElementById("textoBusqueda");
 let retardoEspera = null;
@@ -6,104 +6,96 @@ textoBusqueda.addEventListener('input', (event) => {
     event.preventDefault();
     clearTimeout(retardoEspera);
     retardoEspera = setTimeout(() => {
-        obtenerClientes(textoBusqueda.value)
-    }, 300); 
-    
+        obtenerProductos(textoBusqueda.value)
+    }, 300);
+
 })
 
-function obtenerClientes(busqueda = "") {
+function obtenerProductos(busqueda = "") {
     let filtro = ""
-    if(busqueda == "") {
+    if (busqueda == "") {
         filtro = ""
     } else {
         filtro = `?buscar=${busqueda}`
     }
-    axios.get(`http://localhost:3000/clientes${filtro}`)
+    axios.get(`http://localhost:3000/productos${filtro}`)
         .then(respuesta => {
 
             let datos = respuesta.data;
 
-            let tablaClientes = document.getElementById("tablaClientes");
-            tablaClientes.innerHTML = "";
+            let tablaProductos = document.getElementById("tablaProductos");
+            tablaProductos.innerHTML = "";
 
             for (let indice = 0; indice < datos.length; indice++) {
                 let registro = datos[indice];
 
                 let filaTabla = document.createElement('tr');
 
-                let datoNombre = document.createElement('td');
-                datoNombre.textContent = `${registro.nombre} ${registro.apellido}`;
-                
-                let datoTelefono = document.createElement('td');
-                datoTelefono.textContent = registro.telefono;
+                let datoDescripcion = document.createElement('td');
+                datoDescripcion.textContent = registro.descripcion;
 
-                let datoPiso
-                let datoDepartamento
+                let datoPrecio = document.createElement('td');
+                datoPrecio.textContent = `$${registro.precio}`;
 
-                if (registro.piso !== null) {
-                    console.log(registro.piso)
-                    datoPiso = ` ${registro.piso}`
-                } else {
-                    datoPiso = ""
-                }
+                let datoImagen = document.createElement('td');
 
-                if (registro.departamento !== null) {
-                    console.log(registro.departamento)
-                    datoDepartamento = registro.departamento
-                } else {
-                    datoDepartamento = ""
-                }
+                let imagen = document.createElement('img');
+                imagen.src = registro.URLImagen;
 
-                let datoDireccion = document.createElement('td');
-                datoDireccion.textContent = `${registro.calle} ${registro.numero_dir}${datoPiso}${datoDepartamento}`;
-                let datoBarrio = document.createElement('td');
-                datoBarrio.textContent = registro.nombre_barrio;
-                let datoLocalidad = document.createElement('td');
-                datoLocalidad.textContent = registro.nombre_localidad;
-                let datoTipoCliente = document.createElement('td');
-                datoTipoCliente.textContent = registro.nombre_tipo_cliente;
-                let acciones = document.createElement('td');
-                acciones.classList.add('d-md-table-cell');
-                let botonEliminar = document.createElement('button');
+                imagen.alt = 'Imagen del producto';
 
-                botonEliminar.classList.add('btn', 'btn-sm', 'ms-2', 'me-2');
-                botonEliminar.innerHTML = '<i class="fas fa-trash text-danger"></i>'
+                datoImagen.appendChild(imagen)
 
-                botonEliminar.addEventListener('click', function () {
-                    Swal.fire({
-                        title: "¿Desea eliminar el cliente?",
-                        showCancelButton: true,
-                        confirmButtonText: "Confirmar",
-                        confirmButtonColor: "#1952A0"
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            eliminarCliente(registro.id_cliente);
-                        }
-                    });
-                });
 
-                let botonModificar = document.createElement('button');
-                botonModificar.classList.add('btn', 'btn-sm', 'ms-2', 'me-2');
-                botonModificar.innerHTML = '<i class="fas fa-edit"></i>'
-                botonModificar.setAttribute("data-toggle", "modal")
-                botonModificar.setAttribute("data-target", "#modal-default")
 
-                botonModificar.addEventListener('click', function (event) {
-                    obtenerCliente(registro.id_cliente)
-                })
+                // let datoNumeroPedido = document.createElement('td');
+                // let enlacePedido = document.createElement('a');
+                // enlacePedido.href = "#";
+                // enlacePedido.setAttribute("data-toggle", "modal")
+                // enlacePedido.setAttribute("data-target", "#modal-default")
+                // enlacePedido.textContent = `#${registro.id_pedido}`;
+                // datoNumeroPedido.appendChild(enlacePedido)
 
-                acciones.appendChild(botonEliminar);
-                acciones.appendChild(botonModificar);
 
-                filaTabla.appendChild(datoNombre);
-                filaTabla.appendChild(datoTelefono);
-                filaTabla.appendChild(datoDireccion);
-                filaTabla.appendChild(datoBarrio);
-                filaTabla.appendChild(datoLocalidad);
-                filaTabla.appendChild(datoTipoCliente);
-                filaTabla.appendChild(acciones);
 
-                tablaClientes.appendChild(filaTabla);
+                // let acciones = document.createElement('td');
+                // acciones.classList.add('d-md-table-cell');
+                // let botonEliminar = document.createElement('button');
+
+                // botonEliminar.classList.add('btn', 'btn-sm', 'ms-2', 'me-2');
+                // botonEliminar.innerHTML = '<i class="fas fa-trash text-danger"></i>'
+
+                // botonEliminar.addEventListener('click', function () {
+                //     Swal.fire({
+                //         title: "¿Desea eliminar el producto?",
+                //         showCancelButton: true,
+                //         confirmButtonText: "Confirmar",
+                //         confirmButtonColor: "#1952A0"
+                //     }).then((result) => {
+                //         if (result.isConfirmed) {
+                //             eliminarProducto(registro.id_producto);
+                //         }
+                //     });
+                // });
+
+                // let botonModificar = document.createElement('button');
+                // botonModificar.classList.add('btn', 'btn-sm', 'ms-2', 'me-2');
+                // botonModificar.innerHTML = '<i class="fas fa-edit"></i>'
+                // botonModificar.setAttribute("data-toggle", "modal")
+                // botonModificar.setAttribute("data-target", "#modal-default")
+
+                // botonModificar.addEventListener('click', function (event) {
+                //     obtenerProducto(registro.id_producto)
+                // })
+
+                // acciones.appendChild(botonEliminar);
+                // acciones.appendChild(botonModificar);
+
+                filaTabla.appendChild(datoDescripcion);
+                filaTabla.appendChild(datoPrecio);
+                filaTabla.appendChild(datoImagen);
+
+                tablaProductos.appendChild(filaTabla);
             }
         })
         .catch(error => {
@@ -111,19 +103,19 @@ function obtenerClientes(busqueda = "") {
         });
 }
 
-function eliminarCliente(id) {
-    axios.delete('http://localhost:3000/clientes/' + id)
+function eliminarProducto(id) {
+    axios.delete('http://localhost:3000/productos/' + id)
         .then(respuesta => {
             Swal.fire({
-                text: "Cliente eliminado correctamente",
+                text: "Producto eliminado correctamente",
                 icon: "success",
                 confirmButtonColor: "#1952A0"
             });
-            obtenerClientes();
+            obtenerProductos();
         })
         .catch(error => {
             Swal.fire({
-                text: "Ocurrio un error al eliminar cliente",
+                text: "Ocurrio un error al eliminar producto",
                 icon: "error",
                 confirmButtonColor: "#1952A0"
             });
@@ -132,7 +124,7 @@ function eliminarCliente(id) {
 
 let formulario = document.getElementById('formulario');
 let nombre = document.getElementById('nombre');
-let idCliente = document.getElementById('idCliente');
+let idProducto = document.getElementById('idProducto');
 let apellido = document.getElementById('apellido');
 let tipoDocumento = document.getElementById('tipoDocumento');
 let numeroDoc = document.getElementById('numeroDoc');
@@ -144,24 +136,24 @@ let piso = document.getElementById('piso');
 let departamento = document.getElementById('departamento');
 let localidad = document.getElementById('localidad');
 let barrio = document.getElementById('barrio');
-let tipoCliente = document.getElementById('tipoCliente');
+let tipoProducto = document.getElementById('tipoProducto');
 
 formulario.addEventListener("submit", validarDatos);
 
-function obtenerCliente(id) {
+function obtenerProducto(id) {
     let contenedorErrores = document.getElementById("contenedorErrores");
 
     contenedorErrores.innerHTML = "";
-    
+
     obtenerLocalidades();
 
     obtenerTipoDoc();
 
     obtenerCondicionIVA();
 
-    obtenerTipoCliente();
+    obtenerTipoProducto();
 
-    axios.get('http://localhost:3000/clientes/' + id)
+    axios.get('http://localhost:3000/productos/' + id)
         .then(respuesta => {
             console.log(respuesta.data);
             nombre.value = respuesta.data.nombre;
@@ -173,11 +165,11 @@ function obtenerCliente(id) {
             numeroDir.value = respuesta.data.numero_dir;
             piso.value = respuesta.data.piso;
             departamento.value = respuesta.data.departamento;
-            tipoCliente.value = respuesta.data.id_tipo_cliente;
+            tipoProducto.value = respuesta.data.id_tipo_producto;
             localidad.value = respuesta.data.id_localidad;
-            idCliente.value = respuesta.data.id_cliente 
+            idProducto.value = respuesta.data.id_producto
 
-            obtenerBarrios(respuesta.data.id_localidad,respuesta.data.id_barrio)
+            obtenerBarrios(respuesta.data.id_localidad, respuesta.data.id_barrio)
 
             tipoDocumento.value = respuesta.data.id_tipo_documento;
             condicionIVA.value = respuesta.data.id_condicion;
@@ -226,7 +218,7 @@ selectLocalides.addEventListener("change", function () {
     obtenerBarrios(id_localidad)
 })
 
-function obtenerBarrios(id_localidad,id_barrio=0) {
+function obtenerBarrios(id_localidad, id_barrio = 0) {
 
     selectBarrios.innerHTML = "";
     axios.get('http://localhost:3000/barrios/' + id_localidad)
@@ -245,7 +237,7 @@ function obtenerBarrios(id_localidad,id_barrio=0) {
                 selectBarrios.appendChild(option)
             }
 
-            if(id_barrio != 0) {
+            if (id_barrio != 0) {
                 selectBarrios.value = id_barrio
             }
 
@@ -307,12 +299,12 @@ function obtenerCondicionIVA() {
         });
 }
 
-let selectTipoCliente = document.getElementById("tipoCliente");
+let selectTipoProducto = document.getElementById("tipoProducto");
 
 
-function obtenerTipoCliente() {
-    selectTipoCliente.innerHTML = ""
-    axios.get('http://localhost:3000/tipos_cliente/')
+function obtenerTipoProducto() {
+    selectTipoProducto.innerHTML = ""
+    axios.get('http://localhost:3000/tipos_producto/')
         .then(respuesta => {
 
             let datos = respuesta.data;
@@ -322,10 +314,10 @@ function obtenerTipoCliente() {
 
                 const option = document.createElement('option');
 
-                option.value = registro.id_tipo_cliente
+                option.value = registro.id_tipo_producto
                 option.textContent = registro.nombre
 
-                selectTipoCliente.appendChild(option)
+                selectTipoProducto.appendChild(option)
             }
 
         })
@@ -410,12 +402,12 @@ function validarDatos(event) {
         return
     }
 
-    const cliente = crearObjeto()
-    console.log(cliente);
+    const producto = crearObjeto()
+    console.log(producto);
 
-    axios.put('http://localhost:3000/clientes/' + idCliente.value, cliente)
+    axios.put('http://localhost:3000/productos/' + idProducto.value, producto)
         .then(response => {
-            if(response.data.error) {
+            if (response.data.error) {
                 alert(response.data.error)
             } else {
                 alert(response.data.message)
@@ -423,7 +415,7 @@ function validarDatos(event) {
             }
         })
         .catch(error => {
-            if(error.response.data.error) {
+            if (error.response.data.error) {
                 alert(error.response.data.error)
             } else {
                 alert(error.message)
@@ -440,14 +432,14 @@ function crearObjeto() {
         id_barrio: barrio.value,
         id_localidad: localidad.value,
         correo_electronico: email.value,
-        id_tipo_cliente: tipoCliente.value,
+        id_tipo_producto: tipoProducto.value,
         id_tipo_documento: tipoDocumento.value,
         numero_documento: numeroDoc.value,
         estado: 1,
         numero_dir: numeroDir.value,
-        piso: piso.value == "" ? null:piso.value,
+        piso: piso.value == "" ? null : piso.value,
         departamento: departamento.value,
-        id_condicion: condicionIVA.value == "" ? 1:condicionIVA.value
+        id_condicion: condicionIVA.value == "" ? 1 : condicionIVA.value
     }
 
     return contenidoFormulario

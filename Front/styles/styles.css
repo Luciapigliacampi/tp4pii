@@ -48,12 +48,12 @@ color: #FFFFFF;
   margin-top: -10px;
 }
 
-.buscador-clientes {
+.buscador-productos {
   width: 300px
 }
 
 @media (max-width: 576px) {
-  .buscador-clientes {
+  .buscador-productos {
     width: 250px
   }
 }
