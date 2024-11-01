@@ -33,7 +33,23 @@ textoBusqueda.addEventListener('input', (event) => {
     }, 300);
 
 })
+
+let botonFiltro = document.getElementById("botonFiltro")
+botonFiltro.addEventListener("click", () => {
+    
+})
+
+switch (key) {
+    case value:
+        
+        break;
+
+    default:
+        break;
+}
+
 let datos = []
+
 function obtenerProductos(busqueda = "") {
     let filtro = "";
     if (busqueda == "") {
