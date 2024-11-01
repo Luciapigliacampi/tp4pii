@@ -23,8 +23,6 @@
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
 
-
-
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <ul class="navbar-nav d-flex align-items-center">
         <li class="nav-item">
@@ -92,7 +90,7 @@
     </nav>
 
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-<!-- 
+      <!-- 
       <a href="panel.html" class="brand-link d-flex align-items-center">
         <img src="img/logo_blanco.svg" alt="Bubblify Logo" style="opacity: .8;" height="60">
         <div class="d-flex flex-column ml-2">
@@ -112,13 +110,13 @@
         </div>
 
         <nav class="mt-2">
-          
+
           <ul class="nav nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            
-                <!-- <i class="nav-icon fas fa-th"></i> -->
-                <h4 class="nav-item nav-link">
-                  Categorías
-                </h4> 
+
+            <!-- <i class="nav-icon fas fa-th"></i> -->
+            <h4 class="nav-item nav-link">
+              Categorías
+            </h4>
 
             <li class="nav-item">
               <a href="panel.html" class="nav-link">
@@ -200,61 +198,49 @@
     </div>
 
     <section class="content">
-      <div class="container-fluid">
+
+      <div class="card-tools mb-3">
+
+        <div class="input-group input-group-sm buscador-productos ">
+          <div class="input-group-append">
+
+            <a class="btn" href="#">
+              <i class="fas fa-sort-amount-down-alt"></i>
+            </a>
+
+            <a class="btn" href="#">
+              <i class="fas fa-filter"></i>
+            </a>
+
+            <a class="btn" href="#">
+              <i id="botonVista" class="fas fa-th-large"></i>
+            </a>
+
+          </div>
+
+          <input type="text" name="table_search" id="textoBusqueda" class="form-control float-right"
+            placeholder="Buscar por nombre">
+          <div class="input-group-append">
+            <button type="button" class="btn" id="botonBuscar">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      
+      <div class="row" id="itemsInsertados">
+      </div>
+
+      <div id="tablaProductosC" class="container-fluid">
         <div class="row">
           <section class="col-lg-12 connectedSortable">
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Listado de prodcutos</h3>
-
-                    <div class="card-tools">
-
-                      <div class="input-group input-group-sm buscador-productos">
-                        <div class="input-group-append">
-
-                          <a class="btn" href="#">
-                            <i class="fas fa-sort-amount-down-alt"></i>
-                          </a>
-                    
-                          <a class="btn" href="#">
-                            <i class="fas fa-filter"></i>
-                          </a>
-    
-                          <a class="btn" href="#">
-                            <i class="fas fa-download"></i>
-                          </a>
-
-                          <a class="btn" href="nuevo_producto.html">
-                            <i class="fas fa-user-plus"></i>
-                          </a>
-
-                        </div>
-
-                        <input type="text" name="table_search" id="textoBusqueda" class="form-control float-right"
-                          placeholder="Buscar por nombre">
-                        <div class="input-group-append">
-                          <button type="button" class="btn" id="botonBuscar">
-                            <i class="fas fa-search"></i>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                   <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap">
-                      <!-- <thead>
-                        <tr>
-                          <th>Articulo</th>
-                          <th>Precio</th>
-                          <th>Dirección</th>
-                          <th>Barrio</th>
-                          <th>Localidad</th>
-                          <th>Tipo de producto</th>
-                          <th>Acciones</th>
-                        </tr>
-                      </thead> -->
                       <tbody id="tablaProductos">
                       </tbody>
                     </table>

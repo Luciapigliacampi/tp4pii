@@ -31,12 +31,12 @@ app.get('/productos', (req, res) => {
 
   let filtroBusqueda = "";
   if(buscar) {
-    filtroBusqueda = `AND p.descripcion LIKE '%${buscar}%'`
+    filtroBusqueda = `WHERE p.descripcion LIKE '%${buscar}%'`
   }
 
   console.log(filtroBusqueda);
   
-  connection.query('SELECT p.* FROM productos as p inner join rubros as r on r.id_rubro = p.id_rubro' + filtroBusqueda, (err, results) => {
+  connection.query('SELECT p.* FROM productos as p inner join rubros as r ON r.id_rubro = p.id_rubro ' + filtroBusqueda, (err, results) => {
       if (err) {
           return res.status(500).json({ error: err.message });
       }

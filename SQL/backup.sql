@@ -30,8 +30,7 @@ CREATE TABLE `productos` (
   `precio` decimal(15,2) DEFAULT NULL,
   `URLImagen` varchar(120) DEFAULT NULL,
   `id_rubro` int NOT NULL,
-  PRIMARY KEY (`id_productos`),
-  KEY `fk_id_rubro` (`id_rubro`)
+  PRIMARY KEY (`id_productos`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -41,7 +40,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,'Acrilico EQ rojo fuego',600.00,'Z:Lucia	p4piiFrontimgacrilico_eq_rojo_fuego.jpg',1),(2,'Acrilico EQ azul ultramar',600.00,'Z:Lucia	p4piiFrontimgacrilico_eq_azul_ceruleo.jpg',1),(3,'Pincel liner 000',1500.00,'Z:Lucia	p4piiFrontimgpincel_liner.jpg',1),(4,'Mod Podge x 100 cc.',2500.00,'Z:Lucia	p4piiFrontimgmod_podge.jpg',1),(5,'Base Líquida Maybelline Matte Poreless 118 Light Beige',25000.00,'Z:Lucia	p4piiFrontimgase_fit.jpeg',2),(6,'Delineador Líquido Maybelline Black Matte x 1 g',20630.00,'Z:Lucia	p4piiFrontimgdelinador_liquido.jpg',2),(7,'Maybelline Máscara De Pestañas Waterproof',23000.00,'Z:Lucia	p4piiFrontimgmascara_pestanas.jpg',2),(8,'Bolsa camiseta 40X50',2630.03,'Z:Lucia	p4piiFrontimgolsa_camiseta.jpg',3),(9,'Vaso plastico 110 cc x 100u.',3100.00,'Z:Lucia	p4piiFrontimgvaso_plastico_110.jpg',3),(10,'Bandeja cartón blanca reforzada 17x14 x 100u.',4900.00,'Z:Lucia	p4piiFrontimgandeja_carton.png',3);
+INSERT INTO `productos` VALUES (1,'Acrilico EQ rojo fuego',600.00,'/Front/img/acrilico_eq_rojo_fuego.jpg',1),(2,'Acrilico EQ azul ultramar',600.00,'/Front/img/acrilico_eq_azul_ceruleo.jpg',1),(3,'Pincel liner 000',1500.00,'/Front/img/pincel_liner.jpg',1),(4,'Mod Podge x 100 cc.',2500.00,'/Front/img/mod_podge.jpg',1),(5,'Base Líquida Maybelline Matte Poreless 118 Light Beige',25000.00,'/Front/img/base_fit.jpeg',2),(6,'Delineador Líquido Maybelline Black Matte x 1 g',20630.00,'/Front/img/delinador_liquido.jpg',2),(7,'Maybelline Máscara De Pestañas Waterproof',23000.00,'/Front/img/mascara_pestanas.jpg',2),(8,'Bolsa camiseta 40X50',2630.03,'/Front/img/bolsa_camiseta.jpg',3),(9,'Vaso plastico 110 cc x 100u.',3100.00,'/Front/img/vaso_plastico_110.jpg',3),(10,'Bandeja cartón blanca reforzada 17x14 x 100u.',4900.00,'/Front/img/bandeja_carton.png',3);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -78,4 +77,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-27 18:22:52
+-- Dump completed on 2024-10-27 19:25:20
