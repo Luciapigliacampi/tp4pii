@@ -27,19 +27,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/productos', (req, res) => {
-  const buscar = req.query.buscar
+  const buscar = req.query.buscar;
+  const orden = req.query.orden || 'DESC';
 
-  let filtroBusqueda = "";
-  if(buscar) {
-    filtroBusqueda = `WHERE p.descripcion LIKE '%${buscar}%'`
-  }
+  let filtroBusqueda = buscar ? `WHERE p.descripcion LIKE '%${buscar}%'` : '';
+  let consulta = `SELECT p.* FROM productos as p INNER JOIN rubros as r ON r.id_rubro = p.id_rubro ${filtroBusqueda} ORDER BY p.descripcion ${orden}`;
 
-
-let filtroRubro = "";
-
-  console.log(filtroBusqueda);
-  
-  connection.query('SELECT p.* FROM productos as p inner join rubros as r ON r.id_rubro = p.id_rubro ' + filtroBusqueda + 'WHERE p.id_rurbo = ' + filtroRubro, (err, results) => {
+  connection.query(consulta, (err, results) => {
       if (err) {
           return res.status(500).json({ error: err.message });
       }

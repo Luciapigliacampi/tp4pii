@@ -204,17 +204,28 @@
         <div class="input-group input-group-sm buscador-productos ">
           <div class="input-group-append">
 
-            <a class="btn" href="#">
+            <!-- <a class="btn" href="#">
               <i class="fas fa-sort-amount-down-alt"></i>
             </a>
 
             <a class="btn" href="#" id="botonFiltro">
               <i class="fas fa-filter"></i>
-            </a>
+            </a> -->
+            <label>Categoría:</label>
+            <select id="selectFiltro" class="select2" style="width: 100%;">
+              <option value="Tod" selected>Todas</option>
+              <option value="1">Artística</option>
+              <option value="3">Descartable</option>
+              <option value="4">Librería</option>
+              <option value="2">Maquillaje</option>
+          </select>
 
-            <select class="select2" style="width: 100%;">
-              <option selected>ASC</option>
-              <option>DESC</option>
+            <label>Ordenar por:</label>
+            <select id="selectOrden" class="select2" style="width: 100%;">
+              <option value="ASC" selected>Nombre A a Z</option>
+              <option value="DESC">Nombre Z a A</option>
+              <option value="MEN">Precio menor</option>
+              <option value="MAY">Precio mayor</option>
           </select>
 
             <a class="btn" href="#">
@@ -235,7 +246,7 @@
       </div>
 
       
-      <div class="row" id="itemsInsertados">
+      <div class="row" id="productosAgregados">
       </div>
 
       <div id="tablaProductosC" class="container-fluid">

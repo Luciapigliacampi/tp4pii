@@ -1,7 +1,7 @@
 obtenerProductos();
 
 let tablaProductosC = document.getElementById("tablaProductosC");
-let itemsInsertados = document.getElementById('itemsInsertados');
+let productosAgregados = document.getElementById('productosAgregados');
 
 let botonVista = document.getElementById("botonVista");
 botonVista.addEventListener("click", () => {
@@ -10,13 +10,13 @@ botonVista.addEventListener("click", () => {
         botonVista.classList.replace("fa-th-large", "fa-list");
         console.log("Click view square");
         tablaProductosC.style.display = "none";
-        itemsInsertados.style.display = "flex";
+        productosAgregados.style.display = "flex";
         obtenerCuadriculaProductos();
     }
     else {
         botonVista.classList.replace("fa-list", "fa-th-large");
         console.log("Click view list");
-        itemsInsertados.style.display = "none";
+        productosAgregados.style.display = "none";
         tablaProductosC.style.display = "block";
         obtenerListaProductos();
 
@@ -34,34 +34,33 @@ textoBusqueda.addEventListener('input', (event) => {
 
 })
 
-let botonFiltro = document.getElementById("botonFiltro")
-botonFiltro.addEventListener("click", () => {
-    
-})
+const selectOrden = document.getElementById('selectOrden');
+selectOrden.addEventListener('change', () => {
+    const orden = selectOrden.value === 'ASC' ? 'ASC' : 'DESC';
+    obtenerProductos(textoBusqueda.value, orden);
+});
 
-switch (key) {
-    case value:
-        
-        break;
-
-    default:
-        break;
-}
+const selectFiltro = document.getElementById('selectFiltro');
+selectOrden.addEventListener('change', () => {
+    const orden = selectOrden.value === 'ASC' ? 'ASC' : 'DESC';
+    obtenerProductos(textoBusqueda.value, orden);
+});
 
 let datos = []
 
-function obtenerProductos(busqueda = "") {
-    let filtro = "";
-    if (busqueda == "") {
-        filtro = "";
-    } else {
-        filtro = `?buscar=${busqueda}`;
-    }
+function obtenerProductos(busqueda = "", orden = "ASC") {
+    let filtro = busqueda ? `?buscar=${busqueda}&orden=${orden}` : `?orden=${orden}`;
 
     axios.get(`http://localhost:3000/productos${filtro}`)
         .then(respuesta => {
             datos = respuesta.data;
-            obtenerListaProductos()
+            if (botonVista.classList.contains("fa-th-large")) {
+                obtenerListaProductos();
+            }
+            else {
+                obtenerCuadriculaProductos();
+        
+            }
         })
         .catch(error => {
             console.error('Hubo un problema con la solicitud:', error);
@@ -70,7 +69,7 @@ function obtenerProductos(busqueda = "") {
 
 function obtenerCuadriculaProductos() {
 
-    itemsInsertados.innerHTML = '';
+    productosAgregados.innerHTML = '';
 
             datos.forEach(data => {
                 const col = document.createElement('div');
@@ -87,7 +86,7 @@ function obtenerCuadriculaProductos() {
                 </div>
             </div>
         `;
-                itemsInsertados.appendChild(col);
+                productosAgregados.appendChild(col);
             })
 }
 
