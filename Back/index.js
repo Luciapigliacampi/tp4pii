@@ -29,9 +29,13 @@ app.get('/', (req, res) => {
 app.get('/productos', (req, res) => {
   const buscar = req.query.buscar;
   const orden = req.query.orden || 'DESC';
+  const categoria = req.query.categoria || ''
+
+  console.log(orden);
+  
 
   let filtroBusqueda = buscar ? `WHERE p.descripcion LIKE '%${buscar}%'` : '';
-  let consulta = `SELECT p.* FROM productos as p INNER JOIN rubros as r ON r.id_rubro = p.id_rubro ${filtroBusqueda} ORDER BY p.descripcion ${orden}`;
+  let consulta = `SELECT p.* FROM productos as p INNER JOIN rubros as r ON r.id_rubro = p.id_rubro ${filtroBusqueda} ${categoria} ORDER BY ${orden}`;
 
   connection.query(consulta, (err, results) => {
       if (err) {

@@ -114,22 +114,22 @@
           <ul class="nav nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
             <!-- <i class="nav-icon fas fa-th"></i> -->
-            <h4 class="nav-item nav-link">
-              Categorías
-            </h4>
-
-            <li class="nav-item">
-              <a href="panel.html" class="nav-link">
-                <!-- <i class="nav-icon fas fa-th"></i> -->
-                <p>
-                  Artística
-                </p>
-              </a>
-            </li>
+            <!-- <h4 class="nav-item nav-link">
+              Menú
+            </h4> -->
 
             <li class="nav-item">
               <a href="productos.html" class="nav-link">
-                <!-- <i class="nav-icon fas fa-users"></i> -->
+                <i class="nav-icon fas fa-shopping-basket"></i>
+                <p>
+                  Productos
+                </p>
+              </a>
+            </li>
+<!--
+            <li class="nav-item">
+              <a href="productos.html" class="nav-link">
+                <i class="nav-icon fas fa-users"></i> -
                 <p>
                   Descartable
                 </p>
@@ -138,7 +138,7 @@
 
             <li class="nav-item">
               <a href="productos.html" class="nav-link">
-                <!-- <i class="nav-icon fas fa-boxes"></i> -->
+                 <i class="nav-icon fas fa-boxes"></i>
                 <p>
                   Librería
                 </p>
@@ -147,14 +147,14 @@
 
             <li class="nav-item">
               <a href="pedidos.html" class="nav-link">
-                <!-- <i class="nav-icon fas fa-shopping-cart"></i> -->
+                 <i class="nav-icon fas fa-shopping-cart"></i>
                 <p>
                   Maquillaje
                 </p>
               </a>
             </li>
 
-            <!-- <li class="nav-item">
+             <li class="nav-item">
               <a href="recorridos.html" class="nav-link">
                 <i class="nav-icon fas fa-truck"></i>
                 <p>
@@ -199,9 +199,9 @@
 
     <section class="content">
 
-      <div class="card-tools mb-3">
+      <div class="row mb-3">
 
-        <div class="input-group input-group-sm buscador-productos ">
+          
           <div class="input-group-append">
 
             <!-- <a class="btn" href="#">
@@ -211,22 +211,25 @@
             <a class="btn" href="#" id="botonFiltro">
               <i class="fas fa-filter"></i>
             </a> -->
-            <label>Categoría:</label>
-            <select id="selectFiltro" class="select2" style="width: 100%;">
-              <option value="Tod" selected>Todas</option>
+           <div class="col-12 col-sm-12">
+            <select id="selectFiltro" class="form-control" style="width: 100%;">
+              <option value="" selected>Todas las categorías</option>
               <option value="1">Artística</option>
               <option value="3">Descartable</option>
               <option value="4">Librería</option>
               <option value="2">Maquillaje</option>
-          </select>
+            </select>
+           </div>
 
-            <label>Ordenar por:</label>
-            <select id="selectOrden" class="select2" style="width: 100%;">
-              <option value="ASC" selected>Nombre A a Z</option>
-              <option value="DESC">Nombre Z a A</option>
-              <option value="MEN">Precio menor</option>
-              <option value="MAY">Precio mayor</option>
-          </select>
+           <div class="col-12 col-sm-12">
+            <select id="selectOrden" class="form-control" style="width: 100%;">
+              <option value="ASC" selected>Ordernar Nombre A a Z</option>
+              <option value="DESC">Ordernar Nombre Z a A</option>
+              <option value="MEN">Ordernar Precio menor</option>
+              <option value="MAY">Ordernar Precio mayor</option>
+            </select>
+           </div>
+            
 
             <a class="btn" href="#">
               <i id="botonVista" class="fas fa-th-large"></i>
@@ -236,13 +239,6 @@
 
           <input type="text" name="table_search" id="textoBusqueda" class="form-control float-right"
             placeholder="Buscar por nombre">
-          <div class="input-group-append">
-            <button type="button" class="btn" id="botonBuscar">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-
-        </div>
       </div>
 
       
