@@ -36,20 +36,45 @@ textoBusqueda.addEventListener('input', (event) => {
 
 const selectOrden = document.getElementById('selectOrden');
 selectOrden.addEventListener('change', () => {
-    const orden = selectOrden.value === 'ASC' ? 'ASC' : 'DESC';
+    let orden = "";
+    switch (selectOrden.value) {
+        case 'ASC':
+            orden = 'p.descripcion ASC'
+            break;
+        case 'DESC':
+            orden = 'p.descripcion DESC'
+            break;
+        case 'MEN':
+            orden = 'p.precio ASC'
+            break;
+        case 'MAY':
+            orden = 'p.precio DESC'
+            break;
+        default:
+            orden = 'p.descripcion ASC'
+            break;
+    }
+
     obtenerProductos(textoBusqueda.value, orden);
 });
 
 const selectFiltro = document.getElementById('selectFiltro');
-selectOrden.addEventListener('change', () => {
-    const orden = selectOrden.value === 'ASC' ? 'ASC' : 'DESC';
-    obtenerProductos(textoBusqueda.value, orden);
+selectFiltro.addEventListener('change', () => {
+    let categoria = ""
+    if (selectFiltro.value != "") {
+        categoria = `WHERE p.id_rubro = ${selectFiltro.value}`
+    }
+
+    obtenerProductos(textoBusqueda.value, "p.descripcion ASC", categoria);
 });
 
 let datos = []
 
-function obtenerProductos(busqueda = "", orden = "ASC") {
+function obtenerProductos(busqueda = "", orden = "p.descripcion ASC", categoria = "") {
     let filtro = busqueda ? `?buscar=${busqueda}&orden=${orden}` : `?orden=${orden}`;
+    if (categoria != "") {
+        filtro = filtro + `&categoria=${categoria}`
+    }
 
     axios.get(`http://localhost:3000/productos${filtro}`)
         .then(respuesta => {
@@ -59,7 +84,7 @@ function obtenerProductos(busqueda = "", orden = "ASC") {
             }
             else {
                 obtenerCuadriculaProductos();
-        
+
             }
         })
         .catch(error => {
@@ -71,55 +96,70 @@ function obtenerCuadriculaProductos() {
 
     productosAgregados.innerHTML = '';
 
-            datos.forEach(data => {
-                const col = document.createElement('div');
-                col.classList.add('col-md-4', 'mb-4'); // 3 tarjetas por fila pantlla med
+    datos.forEach(data => {
+        const col = document.createElement('div');
+        col.classList.add('col-md-4', 'mb-4'); // 3 tarjetas por fila pantlla med
 
-                col.innerHTML = `
+        col.innerHTML = `
             <div class="card h-100">
                 <img width="250" src="${data.URLImagen}" class="card-img-top" alt="${data.descripcion}">
                 <div class="card-body">
+
+                    <p class="card-text">
+                        000${data.id_productos}
+                    </p>
                     <h5 class="card-title">${data.descripcion}</h5>
                     <p class="card-text">
                         $${data.precio}
                     </p>
+                    <p class="card-text">
+                        Rubro: ${data.nombreRubro}
+                    </p>
                 </div>
             </div>
         `;
-                productosAgregados.appendChild(col);
-            })
+        productosAgregados.appendChild(col);
+    })
 }
 
 function obtenerListaProductos() {
 
     let tablaProductos = document.getElementById("tablaProductos");
-            tablaProductos.innerHTML = "";
+    tablaProductos.innerHTML = "";
 
-            for (let indice = 0; indice < datos.length; indice++) {
-                let registro = datos[indice];
+    for (let indice = 0; indice < datos.length; indice++) {
+        let registro = datos[indice];
 
-                let filaTabla = document.createElement('tr');
+        let filaTabla = document.createElement('tr');
 
-                let datoDescripcion = document.createElement('td');
-                datoDescripcion.textContent = registro.descripcion;
+        let datoCodigo = document.createElement('td');
+        datoCodigo.textContent = `000${registro.id_productos}`;
 
-                let datoPrecio = document.createElement('td');
-                datoPrecio.textContent = `$${registro.precio}`;
+        let datoDescripcion = document.createElement('td');
+        datoDescripcion.textContent = registro.descripcion;
 
-                let datoImagen = document.createElement('td');
+        let datoPrecio = document.createElement('td');
+        datoPrecio.textContent = `$${registro.precio}`;
 
-                let imagen = document.createElement('img');
-                imagen.src = registro.URLImagen;
-                imagen.width = 200
+        let datoRubro = document.createElement('td');
+        datoRubro.textContent = `Rubro: ${registro.nombreRubro}`;
 
-                imagen.alt = 'Imagen del producto';
+        let datoImagen = document.createElement('td');
 
-                datoImagen.appendChild(imagen)
+        let imagen = document.createElement('img');
+        imagen.src = registro.URLImagen;
+        imagen.width = 200
 
-                filaTabla.appendChild(datoDescripcion);
-                filaTabla.appendChild(datoPrecio);
-                filaTabla.appendChild(datoImagen);
+        imagen.alt = 'Imagen del producto';
 
-                tablaProductos.appendChild(filaTabla);
-            }
+        datoImagen.appendChild(imagen)
+
+        filaTabla.appendChild(datoCodigo);
+        filaTabla.appendChild(datoDescripcion);
+        filaTabla.appendChild(datoPrecio);
+        filaTabla.appendChild(datoRubro);
+        filaTabla.appendChild(datoImagen);
+
+        tablaProductos.appendChild(filaTabla);
+    }
 }
