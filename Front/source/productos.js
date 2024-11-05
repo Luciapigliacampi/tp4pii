@@ -54,17 +54,28 @@ selectOrden.addEventListener('change', () => {
             orden = 'p.descripcion ASC'
             break;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 17b08805dea003474b6850cfe77f6c198b42e3bb
     obtenerProductos(textoBusqueda.value, orden);
 });
 
 const selectFiltro = document.getElementById('selectFiltro');
 selectFiltro.addEventListener('change', () => {
     let categoria = ""
+<<<<<<< HEAD
     if (selectFiltro.value != "") {
         categoria = `WHERE p.id_rubro = ${selectFiltro.value}`
     }
 
+=======
+    if(selectFiltro.value != "") {
+        categoria = `WHERE p.id_rubro = ${selectFiltro.value}`
+    }
+    
+>>>>>>> 17b08805dea003474b6850cfe77f6c198b42e3bb
     obtenerProductos(textoBusqueda.value, "p.descripcion ASC", categoria);
 });
 
@@ -72,7 +83,11 @@ let datos = []
 
 function obtenerProductos(busqueda = "", orden = "p.descripcion ASC", categoria = "") {
     let filtro = busqueda ? `?buscar=${busqueda}&orden=${orden}` : `?orden=${orden}`;
+<<<<<<< HEAD
     if (categoria != "") {
+=======
+    if(categoria != "") {
+>>>>>>> 17b08805dea003474b6850cfe77f6c198b42e3bb
         filtro = filtro + `&categoria=${categoria}`
     }
 
